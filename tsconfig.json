@@ -24,5 +24,10 @@
   "compileOnSave": false,
   "atom": {
     "rewriteTsconfig": false
+  },
+  "baseUrl": "src",
+  "paths": {
+    "@models/*": ["../../src/models/*"],
+    "@providers/*": ["../../src/providers/*"]
   }
 }
