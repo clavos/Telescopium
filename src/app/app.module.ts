@@ -15,6 +15,9 @@ import { LaunchPage } from '../pages/launch/launch';
 import { LaunchPadPage } from '../pages/launch-pad/launch-pad';
 import { CompanyPage } from '../pages/company/company';
 import { RocketDetailsPage } from '../pages/rocket-details/rocket-details';
+import { IonicStorageModule } from '@ionic/storage';
+import { ParametersPage } from '../pages/parameters/parameters';
+import { ParametersProvider } from '../providers/parameters/parameters';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,14 @@ import { RocketDetailsPage } from '../pages/rocket-details/rocket-details';
     LaunchPage,
     LaunchPadPage,
     CompanyPage,
-    RocketDetailsPage
+    RocketDetailsPage,
+    ParametersPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule 
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,14 +44,16 @@ import { RocketDetailsPage } from '../pages/rocket-details/rocket-details';
     LaunchPage,
     LaunchPadPage,
     CompanyPage,
-    RocketDetailsPage
+    RocketDetailsPage,
+    ParametersPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SrcAppProviderSpaceXProvider,
-    ConstantProvider
+    ConstantProvider,
+    ParametersProvider
   ]
 })
 export class AppModule {}

@@ -32,8 +32,8 @@ export class SrcAppProviderSpaceXProvider {
     .map(response => {return response as Company})
   }
 
-  getRockets(){
-    return this.http.get('https://api.spacexdata.com/v2/rockets')
+  getRockets(rocket: string = null){
+    return this.http.get('https://api.spacexdata.com/v2/rockets/' + rocket)
     .map(response => response as Array<Rocket>)
   }
 
