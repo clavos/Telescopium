@@ -17,5 +17,338 @@
 
 
 <ion-content padding>
-  
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Name
+      </ion-label>
+      <div item-content>
+        {{rocket.name}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Type
+      </ion-label>
+      <div item-content>
+        {{rocket.type}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Active
+      </ion-label>
+      <div item-content>
+        {{rocket.active}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Stages
+      </ion-label>
+      <div item-content>
+        {{rocket.stages}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Boosters
+      </ion-label>
+      <div item-content>
+        {{rocket.boosters}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Cost per launch
+      </ion-label>
+      <div item-content>
+        {{rocket.cost_per_launch}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Success rate
+      </ion-label>
+      <div item-content>
+        {{rocket.first_flight}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Country
+      </ion-label>
+      <div item-content>
+        {{rocket.country}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Company
+      </ion-label>
+      <div item-content>
+        {{rocket.company}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Height
+      </ion-label>
+      <div item-content *ngIf="distSys">
+        {{rocket.height.meters}} meters
+      </div>
+      <div item-content *ngIf="!distSys">
+        {{rocket.height.feet}} feet
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Diameters
+      </ion-label>
+      <div item-content *ngIf="distSys">
+        {{rocket.diameter.meters}} meters
+      </div>
+      <div item-content *ngIf="!distSys">
+        {{rocket.diameter.feet}} feet
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        mass
+      </ion-label>
+      <div item-content *ngIf="wghtSys">
+        {{rocket.mass.kg}} Kg
+      </div>
+      <div item-content *ngIf="!wghtSys">
+        {{rocket.mass.lb}} lb
+      </div>
+    </ion-item>
+    <button ion-item (click)="2+2;">
+      <ion-label>
+        Payload weights
+      </ion-label>
+      <ion-icon item-content name="arrow-forward"></ion-icon>
+    </button>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <ion-list-header>First Stage</ion-list-header>
+    <ion-item>
+      <ion-label>
+        reusable
+      </ion-label>
+      <div item-content>
+        {{rocket.first_stage.reusable}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Engines
+      </ion-label>
+      <div item-content>
+        {{rocket.first_stage.engines}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Fuel amount
+      </ion-label>
+      <div item-content>
+        {{rocket.first_stage.fuel_amount_tons}} tons
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Burn time
+      </ion-label>
+      <div item-content>
+        {{rocket.first_stage.burn_time_sec}} seconds
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust sea level
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.first_stage.thrust_sea_level.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.first_stage.thrust_sea_level.lbf}} lbf
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust vacuum
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.first_stage.thrust_vacuum.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.first_stage.thrust_vacuum.lbf}} lbf
+        </div>
+      </div>
+    </ion-item>
+
+    <!-- ---------------------------------------------------------------------------------- -->
+
+    <ion-list-header>Second Stage</ion-list-header>
+    <ion-item>
+      <ion-label>
+        Engines
+      </ion-label>
+      <div item-content>
+        {{rocket.second_stage.engines}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Fuel amount
+      </ion-label>
+      <div item-content>
+        {{rocket.second_stage.fuel_amount_tons}} tons
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Burn time
+      </ion-label>
+      <div item-content>
+        {{rocket.second_stage.burn_time_sec}} seconds
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.second_stage.thrust.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.second_stage.thrust.lbf}} lbf
+        </div>
+      </div>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label>
+        payloads
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.first_stage.thrust_sea_level.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.first_stage.thrust_sea_level.lbf}} lbf
+        </div>
+      </div>
+    </ion-item> -->
+    <ion-list-header>Engines</ion-list-header>
+    <ion-item>
+      <ion-label>
+        Number
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.number}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Type
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.type}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Version
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.version}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Layout
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.layout}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Engine loss max
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.engine_loss_max}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Propellant 1
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.propellant_1}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Propellant 2
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.propellant_2}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust sea level
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.engines.thrust_sea_level.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.engines.thrust_sea_level.lbf}} lbf
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust vacuum
+      </ion-label>
+      <div item-content>
+        <div item-content *ngIf="wghtSys">
+          {{rocket.engines.thrust_vacuum.kN}} kN
+        </div>
+        <div item-content *ngIf="!wghtSys">
+          {{rocket.engines.thrust_vacuum.lbf}} lbf
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Thrust to weight
+      </ion-label>
+      <div item-content>
+        <div item-content>
+          {{rocket.engines.thrust_to_weight}} kN
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
