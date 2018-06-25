@@ -5,7 +5,7 @@ export class Rocket{
     active: boolean;
     stages: number;
     boosters: Number;
-    cost_per_launchv : Number;
+    cost_per_launch : Number;
     success_rate_pct: Number;
     first_flight: Date;
     country: string;

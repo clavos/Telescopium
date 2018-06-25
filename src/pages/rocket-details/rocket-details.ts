@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rocket } from '../../models/Rocket';
 import { SrcAppProviderSpaceXProvider } from '../../providers/src-app-provider-space-x/src-app-provider-space-x';
+import { ParametersProvider } from '../../providers/parameters/parameters';
 
 /**
  * Generated class for the RocketDetailsPage page.
@@ -17,9 +18,15 @@ import { SrcAppProviderSpaceXProvider } from '../../providers/src-app-provider-s
 })
 export class RocketDetailsPage {
   rocket:Rocket;
+  distSys:boolean;
+  wghtSys:boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: SrcAppProviderSpaceXProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: SrcAppProviderSpaceXProvider, private parameters: ParametersProvider) {
     this.rocket = this.navParams.data;
+    this.parameters.getDistanceSystem().then(data =>
+    this.distSys = data);
+    this.parameters.getWeightSystem().then(data =>
+      this.wghtSys = data);
   }
 
   ionViewDidLoad() {

@@ -26,7 +26,7 @@ export class RocketPage {
   ionViewDidLoad() {
     this.spaceXservice.getRockets().subscribe(data => {
       this.rockets = data;
-    })
+    }, ()=> console.log("error"))
     console.log('ionViewDidLoad RocketPage');
   }
 
