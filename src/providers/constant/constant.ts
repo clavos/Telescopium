@@ -24,7 +24,7 @@ export class ConstantProvider {
       { title: 'Home', imgPath:"",component: HomePage },
       { title: 'Rockets', imgPath:"assets/imgs/rockets.png", component: RocketPage },
       { title: 'Launches', imgPath:"assets/imgs/launch.png", component: LaunchPage },
-      { title: 'About Tesla', imgPath:"assets/imgs/CompanyLogo.png", component: CompanyPage },
+      { title: 'About SpaceX', imgPath:"assets/imgs/CompanyLogo.png", component: CompanyPage },
       { title: 'Launch pads', imgPath:"assets/imgs/launchpad.png", component: LaunchPadPage },
       
     ];
