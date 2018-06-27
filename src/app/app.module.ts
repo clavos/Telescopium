@@ -18,6 +18,10 @@ import { RocketDetailsPage } from '../pages/rocket-details/rocket-details';
 import { IonicStorageModule } from '@ionic/storage';
 import { ParametersPage } from '../pages/parameters/parameters';
 import { ParametersProvider } from '../providers/parameters/parameters';
+import { LaunchDetailsPage } from '../pages/launch-details/launch-details';
+import { LaunchListPage } from '../pages/launch-list/launch-list';
+import { ParametersPopoverPage } from '../pages/parameters-popover/parameters-popover';
+import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-details';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { ParametersProvider } from '../providers/parameters/parameters';
     LaunchPadPage,
     CompanyPage,
     RocketDetailsPage,
-    ParametersPage
+    ParametersPage,
+    LaunchDetailsPage,
+    LaunchListPage,
+    ParametersPopoverPage,
+    LaunchpadDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,11 @@ import { ParametersProvider } from '../providers/parameters/parameters';
     LaunchPadPage,
     CompanyPage,
     RocketDetailsPage,
-    ParametersPage
+    ParametersPage,
+    LaunchDetailsPage,
+    LaunchListPage,
+    ParametersPopoverPage,
+    LaunchpadDetailsPage
   ],
   providers: [
     StatusBar,

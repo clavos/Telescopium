@@ -18,13 +18,14 @@
     <ion-list-header>
       Display
     </ion-list-header>
-  </ion-list>
-  <ion-item>
-    <ion-label>Metric system</ion-label>
-    <ion-toggle [(ngModel)]="DistanceSystem" (ionChange)="onDistanceChange()"></ion-toggle>
-  </ion-item>
-  <ion-item>
+
+    <ion-item>
+      <ion-label>Metric system</ion-label>
+      <ion-toggle [(ngModel)]="DistanceSystem" (ionChange)="onDistanceChange()"></ion-toggle>
+    </ion-item>
+    <ion-item>
       <ion-label>Weight in kilograms</ion-label>
       <ion-toggle [(ngModel)]="weightSystem" (ionChange)="onWeightChange()"></ion-toggle>
     </ion-item>
+  </ion-list>
 </ion-content>

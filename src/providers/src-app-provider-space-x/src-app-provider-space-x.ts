@@ -32,8 +32,9 @@ export class SrcAppProviderSpaceXProvider {
     .map(response => {return response as Company})
   }
 
-  getRockets(){
-    return this.http.get('https://api.spacexdata.com/v2/rockets')
+  getRockets(rocket_id: string = ""){
+    console.log('https://api.spacexdata.com/v2/rockets/'+rocket_id)
+    return this.http.get('https://api.spacexdata.com/v2/rockets/'+rocket_id)
     .map(response => response as Array<Rocket>)
   }
 
@@ -42,14 +43,34 @@ export class SrcAppProviderSpaceXProvider {
     .map(response => response as Array<Capsule>)
   }
 
-  getLaunchPads(){
-    return this.http.get('https://api.spacexdata.com/v2/launchpads')
+  getLaunchPads(launchpad_id:string = ""){
+    return this.http.get('https://api.spacexdata.com/v2/launchpads/'+launchpad_id)
     .map(response => response as Array<LaunchPad>)
   }
 
-  getLaunches(){
+  getAllLaunches(){
+    return this.http.get('https://api.spacexdata.com/v2/launches/all')
+    .map(response => response as Array<Launch>)
+  }
+
+  getAllNextLaunches(){
+    return this.http.get('https://api.spacexdata.com/v2/launches/upcoming')
+    .map(response => response as Array<Launch>)
+  }
+
+  getAllpastLaunches(){
     return this.http.get('https://api.spacexdata.com/v2/launches')
     .map(response => response as Array<Launch>)
+  }
+
+  getNextLaunch(){
+    return this.http.get('https://api.spacexdata.com/v2/launches/next')
+    .map(response => response as Launch)
+  }
+
+  getLastLaunch(){
+    return this.http.get('https://api.spacexdata.com/v2/launches/latest')
+    .map(response => response as Launch)
   }
 
   getCapsuleDetails(){

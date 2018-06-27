@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Subject } from 'rxjs/Subject';
 
 /*
   Generated class for the ParametersProvider provider.
@@ -10,26 +11,44 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class ParametersProvider {
-  DistanceSystem: boolean;
+  
+
+  public distanceSystem: boolean;
+  DistanceSystemObs: Subject<boolean>;
+
+  public weightSystem: boolean;
+  weightSystemObs: Subject<boolean>;
+
   constructor(public http: HttpClient, private storage:Storage) {
     console.log('Hello ParametersProvider Provider');
+    this.DistanceSystemObs = new Subject<boolean>();
+    this.weightSystemObs = new Subject<boolean>();
+    this.storage.get(parametersString.DISTANCE_SYSTEM.toString()).then( (data)=> this.DistanceSystemObs.next(data));
+
+    this.storage.get(parametersString.DISTANCE_SYSTEM.toString()).then( (data)=> this.weightSystemObs.next(data));
   }
-  getDistanceSystem(){
+  public getDistanceSystem(){
     // console.log("parametersString dist param", parametersString.DISTANCE_SYSTEM.toString())
-    return this.storage.get(parametersString.DISTANCE_SYSTEM.toString());
+    this.storage.get(parametersString.DISTANCE_SYSTEM.toString()).then( (data)=> {this.distanceSystem = data; this.DistanceSystemObs.next(data)});
   }
 
   public setDistanceSystem(value: boolean){
     // console.log("parametersString dist param", parametersString.DISTANCE_SYSTEM.toString())
-    return this.storage.set(parametersString.DISTANCE_SYSTEM.toString(), value);
+    this.storage.set(parametersString.DISTANCE_SYSTEM.toString(), value).then(data => {
+      this.distanceSystem = value; 
+      this.DistanceSystemObs.next(value);
+    });
   }
 
-  getWeightSystem(){
-    return this.storage.get(parametersString.WEIGHT_SYSTEM.toString());
+  public getWeightSystem(){
+    this.storage.get(parametersString.WEIGHT_SYSTEM.toString()).then( (data)=> {this.weightSystem = data; this.weightSystemObs.next(data)});
   }
 
   public setWeightSystem(isKilogram: boolean){
-    return this.storage.set(parametersString.WEIGHT_SYSTEM.toString(), isKilogram);
+    this.storage.set(parametersString.WEIGHT_SYSTEM.toString(), isKilogram).then(data => {
+      this.weightSystem = isKilogram; 
+      this.weightSystemObs.next(isKilogram);
+    });
   }
 
   initializeData(){

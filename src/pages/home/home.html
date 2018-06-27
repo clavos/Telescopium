@@ -16,21 +16,19 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button> -->
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12 *ngFor="let page of pages">
-        <ion-card (click)="navigate(page)">
-          <img src="{{page.imgPath}}" />
-          <ion-card-content>
-            <ion-card-title>
-              {{page.title}}
-            </ion-card-title>
-            <p>
-              {{page.title}}
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list>
+    <ion-item *ngFor="let page of pages">
+      <ion-card (click)="navigate(page)">
+        <img src="{{page.imgPath}}" />
+        <ion-card-content>
+          <ion-card-title>
+            {{page.title}}
+          </ion-card-title>
+          <p>
+            {{page.title}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
