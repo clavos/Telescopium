@@ -7,12 +7,70 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Launchpad_details</ion-title>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Launchpad details : {{launchpad.full_name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Full name
+      </ion-label>
+      <div item-content>
+        {{launchpad.full_name}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Status
+      </ion-label>
+      <div item-content>
+        {{launchpad.status}}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Location
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        Name
+      </ion-label>
+      <div item-content>
+        {{launchpad.location.name}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Region
+      </ion-label>
+      <div item-content>
+        {{launchpad.location.region}}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Vehicles launched
+    </ion-list-header>
+    <button ion-item *ngFor="let vehicle of launchpad.vehicles_launched" (click)="openRocket(vehicle)">
+      <ion-label>
+          {{vehicle}}
+      </ion-label>
+    </button>
 
+    <ion-item-divider></ion-item-divider>
+
+    <ion-list-header>
+      Details
+    </ion-list-header>
+    <ion-item>
+      <div item-content>
+        {{launchpad.details}}
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

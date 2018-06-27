@@ -55,11 +55,11 @@ export class LaunchDetailsPage {
   }
 
   OpenRocket(rocket_id:string){
-    this.provider.getRockets(rocket_id).subscribe(data=>{console.log(data);this.navCtrl.push(RocketDetailsPage, data[0])})
+    this.provider.getRockets(rocket_id).subscribe(data=>{console.log("rocket from launch",data);this.navCtrl.push(RocketDetailsPage, data)})
   }
 
   OpenLaunchpad(launchpad_id:string){
-    this.provider.getLaunchPads(launchpad_id).subscribe(data=>{console.log(data);this.navCtrl.push(LaunchpadDetailsPage, data[0])})
+    this.provider.getLaunchPads(launchpad_id).subscribe(launchpad=>{console.log(launchpad);this.navCtrl.push(LaunchpadDetailsPage, launchpad)})
   }
 
   isFutureLaunch():boolean{

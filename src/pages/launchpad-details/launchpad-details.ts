@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LaunchPad } from '../../models/LaunchPad';
+import { SrcAppProviderSpaceXProvider } from '../../providers/src-app-provider-space-x/src-app-provider-space-x';
+import { RocketDetailsPage } from '../rocket-details/rocket-details';
 
 /**
  * Generated class for the LaunchpadDetailsPage page.
@@ -14,12 +17,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'launchpad-details.html',
 })
 export class LaunchpadDetailsPage {
+  launchpad: LaunchPad;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private provider:SrcAppProviderSpaceXProvider, private taostCtrl: ToastController) {
+    this.launchpad = this.navParams.data;
+    console.log(this.launchpad);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LaunchpadDetailsPage');
   }
 
+  openRocket(rocket_id:string){
+    rocket_id =  rocket_id.replace(" ", "");
+    rocket_id =  rocket_id.toLowerCase();
+    this.provider.getRockets(rocket_id).subscribe(data=>{
+      if(data){
+        this.navCtrl.push(RocketDetailsPage, data);
+      }else{
+        this.taostCtrl.create({
+          message:"No rocket could be retrieved",
+          duration: 5000
+        })
+      }      
+    })
+  }
 }

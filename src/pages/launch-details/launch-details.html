@@ -11,11 +11,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Launch details : {{launch.mission_name}}</ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
@@ -28,7 +28,16 @@
       <ion-card-title>
         Mission's patch
       </ion-card-title>
+      <p>{{launch.details}}</p>
     </ion-card-content>
+    <button ion-item (click)="OpenRocket(launch.rocket.rocket_id)">
+      More informations on rocket
+    </button>
+    <button ion-item (click)="OpenLaunchpad(launch.rocket.rocket_id)">
+      More informations on Launch site
+    </button>
+
+    
   </ion-card>
   <ion-list>
     <ion-item>
@@ -68,7 +77,7 @@
         Launch date
       </ion-label>
       <div item-content>
-        {{launch.launch_date_utc |  date:'dd/MM/yyyy HH:MM'}}
+        {{launch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}
       </div>
     </ion-item>
     <ion-item>
@@ -76,120 +85,106 @@
         Launch date local
       </ion-label>
       <div item-content>
-        {{launch.launch_date_local |  date:'dd/MM/yyyy HH:MM'}}
+        {{launch.launch_date_local | date:'dd/MM/yyyy HH:MM'}}
+      </div>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        Flight club
+      </ion-label>
+      <div item-content>
+        {{launch.telemetry.flight_club}}
       </div>
     </ion-item>
     <ion-list-header>
-      Rocket
+      Parts reused
     </ion-list-header>
     <ion-item>
       <ion-label>
-        Rocket name
+        Core
       </ion-label>
       <div item-content>
-        {{launch.rocket.rocket_name}}
+        {{launch.reuse.core}}
       </div>
     </ion-item>
-    <button ion-item (click)="OpenRocket(launch.rocket.rocket_id)">
+    <ion-item>
       <ion-label>
-        Rocket informations
+        Side core 1
+      </ion-label>
+      <div item-content>
+        {{launch.reuse.side_core1}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Side core 2
+      </ion-label>
+      <div item-content>
+        {{launch.reuse.side_core2}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Fairings
+      </ion-label>
+      <div item-content>
+        {{launch.reuse.fairings}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Capsule
+      </ion-label>
+      <div item-content>
+        {{launch.reuse.capsule}}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Launch site
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        Launch site name
+      </ion-label>
+      <div item-content>
+        {{launch.launch_site.site_name}}
+      </div>
+    </ion-item>
+    <button ion-item (click)="OpenLaunchpad(launch.launch_site.site_id)">
+      <ion-label>
+        Launch site informations
+      </ion-label>
+    </button>
+    <ion-item-divider></ion-item-divider>
+    <ion-item>
+      <ion-label>
+        Launch success
+      </ion-label>
+      <div item-content>
+        <ion-icon *ngIf="launch.launch_success && !isFutureLaunch()" name="checkmark-circle" style="color:green"></ion-icon>
+        <ion-icon *ngIf="!launch.launch_success && !isFutureLaunch()" name="ios-close-circle" style="color:red"></ion-icon>
+        <span *ngIf="isFutureLaunch()">Launch in the future</span>
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Links
+    </ion-list-header>
+    <button *ngIf="launch.links.article_link" (click)="openLink(launch.links.article_link)" ion-item>
+      <ion-label>
+        Article
+      </ion-label>
+    </button>
+    <button *ngIf="launch.links.wikipedia" (click)="openLink(launch.links.wikipedia)" ion-item>
+      <ion-label>
+        Wikipedia
+      </ion-label>
+    </button>
+    <button *ngIf="launch.links.video_link" (click)="openLink(launch.links.video_link)" ion-item>
+      <ion-label>
+        Video
       </ion-label>
     </button>
   </ion-list>
-  <ion-item>
-    <ion-label>
-      Flight club
-    </ion-label>
-    <div item-content>
-      {{launch.telemetry.flight_club}}
-    </div>
-  </ion-item>
-  <ion-list-header>
-    Parts reused
-  </ion-list-header>
-  <ion-item>
-    <ion-label>
-      Core
-    </ion-label>
-    <div item-content>
-      {{launch.reuse.core}}
-    </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Side core 1
-    </ion-label>
-    <div item-content>
-      {{launch.reuse.side_core1}}
-    </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Side core 2
-    </ion-label>
-    <div item-content>
-      {{launch.reuse.side_core2}}
-    </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Fairings
-    </ion-label>
-    <div item-content>
-      {{launch.reuse.fairings}}
-    </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Capsule
-    </ion-label>
-    <div item-content>
-      {{launch.reuse.capsule}}
-    </div>
-  </ion-item>
-  <ion-list-header>
-    Launch site
-  </ion-list-header>
-  <ion-item>
-    <ion-label>
-      Launch site name
-    </ion-label>
-    <div item-content>
-      {{launch.launch_site.site_name}}
-    </div>
-  </ion-item>
-  <button ion-item (click)="OpenLaunchpad(launch.launch_site.site_id)">
-    <ion-label>
-      Launch site informations
-    </ion-label>
-  </button>
-  <ion-item-divider></ion-item-divider>
-  <ion-item>
-    <ion-label>
-      Launch success
-    </ion-label>
-    <div item-content>
-      <ion-icon *ngIf="launch.launch_success && !isFutureLaunch()" name="checkmark-circle" style="color:green"></ion-icon>
-      <ion-icon *ngIf="!launch.launch_success && !isFutureLaunch()" name="ios-close-circle" style="color:red"></ion-icon>
-      <span *ngIf="isFutureLaunch()">Launch in the future</span>
-    </div>
-  </ion-item>
-  <ion-list-header>
-    Links
-  </ion-list-header>
-  <button *ngIf="launch.links.article_link" (click)="openLink(launch.links.article_link)" ion-item>
-    <ion-label>
-      Article
-    </ion-label>
-  </button>
-  <button *ngIf="launch.links.wikipedia" (click)="openLink(launch.links.wikipedia)" ion-item>
-    <ion-label>
-      Wikipedia
-    </ion-label>
-  </button>
-  <button *ngIf="launch.links.video_link" (click)="openLink(launch.links.video_link)" ion-item>
-    <ion-label>
-      Video
-    </ion-label>
-  </button>  
 </ion-content>

@@ -6,16 +6,20 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-      <button menuToggle ion-button icon-only>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Launch pad</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Launch pad</ion-title>
+  </ion-navbar>
+
+</ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item (click)="openLaunchpad(launchpad)" *ngFor="let launchpad of launchpads">
+      {{launchpad.full_name}}
+    </button>
+  </ion-list>
 </ion-content>
