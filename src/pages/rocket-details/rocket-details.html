@@ -11,6 +11,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Rocket detail : {{rocket.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -123,12 +128,12 @@
         {{rocket.mass.lb}} lb
       </div>
     </ion-item>
-    <button ion-item (click)="2+2;">
+    <!-- <button ion-item (click)="2+2;">
       <ion-label>
         Payload weights
       </ion-label>
       <ion-icon item-content name="arrow-forward"></ion-icon>
-    </button>
+    </button> -->
     <!-- ---------------------------------------------------------------------------------------------------- -->
     <ion-list-header>First Stage</ion-list-header>
     <ion-item>
@@ -346,7 +351,7 @@
       </ion-label>
       <div item-content>
         <div item-content>
-          {{rocket.engines.thrust_to_weight}} kN
+          {{rocket.engines.thrust_to_weight}}
         </div>
       </div>
     </ion-item>

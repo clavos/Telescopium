@@ -1,33 +1,19 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewController, ToastController } from 'ionic-angular';
 import { ParametersProvider } from '../../providers/parameters/parameters';
 import { Subscription } from 'rxjs/Subscription';
 
-/**
- * Generated class for the ParametersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
-  selector: 'page-parameters',
-  templateUrl: 'parameters.html',
+  templateUrl: 'parameters-popover.html',
 })
-export class ParametersPage {
+export class ParametersPopoverPage {
   DistanceSystem: boolean;
   weightSystem: boolean;
 
   private _distSysSub: Subscription;
   private _wghtSysSub: Subscription;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private parameters: ParametersProvider) {
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ParametersPage');
+  constructor(public viewCtrl: ViewController, private parameters: ParametersProvider, private toastCtrl: ToastController) {
     this._distSysSub = this.parameters.DistanceSystemObs.subscribe(data =>
       this.DistanceSystem = data);
     this._wghtSysSub = this.parameters.weightSystemObs.subscribe(data =>
@@ -36,6 +22,9 @@ export class ParametersPage {
     this.parameters.getWeightSystem();
   }
 
+  close() {
+    this.viewCtrl.dismiss();
+  }
   public onDistanceChange() {
     this.parameters.setDistanceSystem(this.DistanceSystem);
   }

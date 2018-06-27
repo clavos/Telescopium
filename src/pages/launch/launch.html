@@ -10,12 +10,27 @@
     <button menuToggle ion-button icon-only>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Launch</ion-title>
+    <ion-title>Rocket detail : Next launch</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  
+  <button color="light" ion-button class="main-button" (click)="openNextLaunch()">
+    Get next launch
+  </button>
+  <button color="light" ion-button class="main-button" (click)="openLastLaunch()">
+    Get last launch
+  </button>
+  <button color="light" ion-button class="main-button" (click)="openAllPastLaunches()">
+    Get all past launches
+  </button>
+  <button color="light" ion-button class="main-button" (click)="openAllNextLaunches()">
+    Get all upcoming launches
+  </button>
+
+  <button ion-button class="main-button" (click)="openAllLaunches()">
+    Get all upcoming and past launches
+  </button>
 </ion-content>
