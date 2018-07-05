@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding class="card-background-page">
-  <ion-img style="width: 100%; height: 300px; background-color: transparent;" src="assets/imgs/rocket.png"></ion-img>
+  
   <!-- <h3>Ionic Menu Starter</h3>
 
   <p>
@@ -16,7 +16,7 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button> -->
-  <ion-list>
+  <!-- <ion-list>
     <ion-item *ngFor="let page of pages">
       <ion-card (click)="navigate(page)">
         <img src="{{page.imgPath}}" />
@@ -30,5 +30,37 @@
         </ion-card-content>
       </ion-card>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <ion-card *ngIf="isLoaded">
+    <ion-card-header>
+      Next launch
+    </ion-card-header>
+    <ion-item>
+      <div class="centered-item">
+          <b>{{days}}:{{hours}}:{{minutes}}:{{seconds}}</b>
+      </div>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Flight number
+        </ion-label>
+        <div item-content>
+          {{nextLaunch.flight_number}}
+        </div>
+        <!-- <ion-note item-end>
+            
+          </ion-note> -->
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>
+          Launch date
+        </ion-label>
+        <div item-content>
+          {{nextLaunch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

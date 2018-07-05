@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Company, Companyhistory } from '../../models/Company';
@@ -49,17 +49,20 @@ export class SrcAppProviderSpaceXProvider {
   }
 
   getAllLaunches(){
-    return this.http.get('https://api.spacexdata.com/v2/launches/all')
+    let param = new HttpParams().set('order','desc')
+    return this.http.get('https://api.spacexdata.com/v2/launches/all', {params: param} )
     .map(response => response as Array<Launch>)
   }
 
   getAllNextLaunches(){
-    return this.http.get('https://api.spacexdata.com/v2/launches/upcoming')
+    let param = new HttpParams().set('order','asc')
+    return this.http.get('https://api.spacexdata.com/v2/launches/upcoming', {params: param})
     .map(response => response as Array<Launch>)
   }
 
   getAllpastLaunches(){
-    return this.http.get('https://api.spacexdata.com/v2/launches')
+    let param = new HttpParams().set('order','desc')
+    return this.http.get('https://api.spacexdata.com/v2/launches', {params: param})
     .map(response => response as Array<Launch>)
   }
 

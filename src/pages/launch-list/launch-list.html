@@ -35,6 +35,12 @@
       </ion-avatar>
       <h2>{{launch.mission_name}}</h2>
       <p>{{launch.details}}</p>
+      <!-- <ion-grid>
+        <ion-row> -->
+          <p>launch date (UTC) : {{launch.launch_date_utc}}</p>
+          <ion-note item-end>Success: <ion-icon></ion-icon>{{launch.launch_success}}</ion-note>
+        <!-- </ion-row>
+      </ion-grid> -->
     </ion-item>
   </ion-list>
 </ion-content>
