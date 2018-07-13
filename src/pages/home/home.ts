@@ -1,3 +1,4 @@
+import { LaunchDetailsPage } from './../launch-details/launch-details';
 import { Launch } from './../../models/Launch';
 import { SrcAppProviderSpaceXProvider } from './../../providers/src-app-provider-space-x/src-app-provider-space-x';
 import { Component } from '@angular/core';
@@ -81,4 +82,7 @@ export class HomePage {
     this.navCtrl.push(page.component);
   }
 
+  public openNextLauch(){
+    this.navCtrl.push(LaunchDetailsPage, this.nextLaunch);
+  }
 }

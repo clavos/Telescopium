@@ -35,16 +35,15 @@
   <div [ngSwitch]="launchType">
     <ion-list *ngSwitchCase="'nextLaunches'">
       <ion-item *ngFor="let launch of launchesNext" (click)="openLaunch(launch)">
-        <ion-avatar item-start>
+        <!-- <ion-avatar item-start>
           <img src="{{launch.links.mission_patch_small}}">
-        </ion-avatar>
+        </ion-avatar> -->
         <h2>{{launch.mission_name}}</h2>
         <p>{{launch.details}}</p>
         <!-- <ion-grid>
               <ion-row> -->
-        <p>launch date (UTC) : {{launch.launch_date_utc}}</p>
-        <ion-note item-end>Success:
-          <ion-icon></ion-icon>{{launch.launch_success}}</ion-note>
+        <p>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}</p>
+        <ion-note item-end class="ToBeLaunched"><ion-icon name="calendar"></ion-icon></ion-note>
         <!-- </ion-row>
             </ion-grid> -->
       </ion-item>
@@ -59,9 +58,10 @@
         <p>{{launch.details}}</p>
         <!-- <ion-grid>
                   <ion-row> -->
-        <p>launch date (UTC) : {{launch.launch_date_utc}}</p>
-        <ion-note item-end>Success:
-          <ion-icon></ion-icon>{{launch.launch_success}}</ion-note>
+        <p>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}</p>
+        <ion-note item-end *ngIf="launch.launch_success"><ion-icon name="checkmark-circle" style="color:green"></ion-icon></ion-note>
+        <ion-note item-end *ngIf="!launch.launch_success"><ion-icon name="ios-close-circle" style="color:red"></ion-icon></ion-note>
+        
         <!-- </ion-row>
                 </ion-grid> -->
       </ion-item>
@@ -69,16 +69,17 @@
 
     <ion-list *ngSwitchCase="'alllaunches'">
       <ion-item *ngFor="let launch of launchesAll" (click)="openLaunch(launch)">
-        <ion-avatar item-start>
+        <ion-avatar *ngIf="launch.links.mission_patch_small != null" item-start>
           <img src="{{launch.links.mission_patch_small}}">
         </ion-avatar>
         <h2>{{launch.mission_name}}</h2>
         <p>{{launch.details}}</p>
         <!-- <ion-grid>
                   <ion-row> -->
-        <p>launch date (UTC) : {{launch.launch_date_utc}}</p>
-        <ion-note item-end>Success:
-          <ion-icon></ion-icon>{{launch.launch_success}}</ion-note>
+        <p>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}</p>
+        <ion-note item-end *ngIf="launch.launch_success && launch.launch_success!=null"><ion-icon name="checkmark-circle" style="color:green"></ion-icon></ion-note>
+        <ion-note item-end *ngIf="!launch.launch_success && launch.launch_success!=null"><ion-icon name="ios-close-circle" style="color:red"></ion-icon></ion-note>
+        <ion-note item-end *ngIf="launch.launch_success == null"><ion-icon name="calendar" style="color:yellow"></ion-icon></ion-note>
         <!-- </ion-row>
                 </ion-grid> -->
       </ion-item>

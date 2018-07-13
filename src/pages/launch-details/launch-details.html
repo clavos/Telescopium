@@ -22,19 +22,29 @@
 
 
 <ion-content padding>
-  <ion-card *ngIf="launch.links.mission_patch">
-    <img src={{launch.links.mission_patch}}/>
-    <ion-card-content>
-      <ion-card-title>
+  <ion-card>
+    <img *ngIf="launch.links.mission_patch_small" src={{launch.links.mission_patch_small}}/>
+    <ion-card-content *ngIf="launch.links.mission_patch_small && launch.details">
+      <ion-card-title *ngIf="launch.links.mission_patch_small">
         Mission's patch
       </ion-card-title>
       <p>{{launch.details}}</p>
     </ion-card-content>
+    <ion-item>
+      <ion-label>
+        Success
+      </ion-label>
+      <div item-content>
+        <ion-icon *ngIf="launch.launch_success && !isFutureLaunch()" name="checkmark-circle" style="color:green"></ion-icon>
+        <ion-icon *ngIf="!launch.launch_success && !isFutureLaunch()" name="ios-close-circle" style="color:red"></ion-icon>
+        <span *ngIf="isFutureLaunch()">To be launched</span>
+      </div>
+    </ion-item>
     <button ion-item (click)="OpenRocket(launch.rocket.rocket_id)">
-      More informations on rocket
+      Rocket informations
     </button>
     <button ion-item (click)="OpenLaunchpad(launch.rocket.rocket_id)">
-      More informations on Launch site
+      Launch site informations
     </button>
 
     
@@ -152,22 +162,7 @@
         {{launch.launch_site.site_name}}
       </div>
     </ion-item>
-    <button ion-item (click)="OpenLaunchpad(launch.launch_site.site_id)">
-      <ion-label>
-        Launch site informations
-      </ion-label>
-    </button>
     <ion-item-divider></ion-item-divider>
-    <ion-item>
-      <ion-label>
-        Launch success
-      </ion-label>
-      <div item-content>
-        <ion-icon *ngIf="launch.launch_success && !isFutureLaunch()" name="checkmark-circle" style="color:green"></ion-icon>
-        <ion-icon *ngIf="!launch.launch_success && !isFutureLaunch()" name="ios-close-circle" style="color:red"></ion-icon>
-        <span *ngIf="isFutureLaunch()">Launch in the future</span>
-      </div>
-    </ion-item>
     <ion-list-header>
       Links
     </ion-list-header>

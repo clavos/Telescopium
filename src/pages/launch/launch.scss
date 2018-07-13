@@ -1,5 +1,23 @@
 page-launch {
+    ion-note {
+        font-size: 12px;
+        align-self: flex-start;
+        margin-top: 14px;
 
+        
+    }
+}
+
+.ToBeLaunched{
+    color: yellow;
+}
+
+.Success{
+    color: green;
+}
+
+.Failed{
+    color: red;
 }
 
 .main-button{
