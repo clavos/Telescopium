@@ -27,6 +27,10 @@ export class LaunchListPage {
     this.navCtrl.push(LaunchDetailsPage, launch);
   }
 
+  // getIconSuccess():string{
+
+  // }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LaunchListPage');
   }
