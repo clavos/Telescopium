@@ -13,7 +13,7 @@ export class ParametersPopoverPage {
   private _distSysSub: Subscription;
   private _wghtSysSub: Subscription;
 
-  constructor(public viewCtrl: ViewController, private parameters: ParametersProvider, private toastCtrl: ToastController) {
+  constructor(public viewCtrl: ViewController, private parameters: ParametersProvider) {
     this._distSysSub = this.parameters.DistanceSystemObs.subscribe(data =>
       this.DistanceSystem = data);
     this._wghtSysSub = this.parameters.weightSystemObs.subscribe(data =>

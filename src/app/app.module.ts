@@ -1,3 +1,5 @@
+import { CapsulesListPage } from './../pages/capsules-list/capsules-list';
+import { LaunchesFiltersPopoverPage } from './../pages/launches-filters-popover/launches-filters-popover';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -36,7 +38,9 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     LaunchDetailsPage,
     LaunchListPage,
     ParametersPopoverPage,
-    LaunchpadDetailsPage
+    LaunchpadDetailsPage,
+    LaunchesFiltersPopoverPage,
+    CapsulesListPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     LaunchDetailsPage,
     LaunchListPage,
     ParametersPopoverPage,
-    LaunchpadDetailsPage
+    LaunchpadDetailsPage,
+    CapsulesListPage
   ],
   providers: [
     StatusBar,

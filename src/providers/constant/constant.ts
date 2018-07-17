@@ -1,3 +1,4 @@
+import { CapsulesListPage } from './../../pages/capsules-list/capsules-list';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HomePage } from '../../pages/home/home';
@@ -25,6 +26,7 @@ export class ConstantProvider {
       { title: 'Rockets', imgPath:"assets/imgs/rockets.png", component: RocketPage },
       { title: 'Launches', imgPath:"assets/imgs/launch.png", component: LaunchPage },
       { title: 'Launch pads', imgPath:"assets/imgs/launchpad.png", component: LaunchPadPage }, 
+      { title: 'Capsules', imgPath:"", component: CapsulesListPage }, 
       { title: 'About SpaceX', imgPath:"assets/imgs/CompanyLogo.png", component: CompanyPage },
       
     ];
