@@ -17,7 +17,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private constant: ConstantProvider, private parameters: ParametersProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, protected constant: ConstantProvider, private parameters: ParametersProvider) {
     this.initializeApp();
 
     this.pages = constant.pages();

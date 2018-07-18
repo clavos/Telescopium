@@ -43,6 +43,11 @@ export class SrcAppProviderSpaceXProvider {
     .map(response => response as Array<Capsule>)
   }
 
+  getCapsulesDetails(){
+    return this.http.get('https://api.spacexdata.com/v2/parts/caps/')
+    .map(response => response as Array<CapsuleDetails>)
+  }
+
   getLaunchPads(launchpad_id:string = ""){
     return this.http.get('https://api.spacexdata.com/v2/launchpads/'+launchpad_id)
     .map(response => response as Array<LaunchPad>)

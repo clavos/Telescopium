@@ -15,11 +15,13 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <ion-list>
     <button ion-item (click)="openLaunchpad(launchpad)" *ngFor="let launchpad of launchpads">
-      {{launchpad.full_name}}
+      <h2>{{launchpad.full_name}}</h2>
+      <p>Vehicles launched : {{launchpad.vehicles_launched.length}}</p>
+      <p>Location : {{launchpad.location.region}}</p>
+      <ion-note [ngStyle]="{'color' : getColorStatusLaunchpad(launchpad)}" item-end>{{launchpad.status}}</ion-note>
     </button>
   </ion-list>
 </ion-content>

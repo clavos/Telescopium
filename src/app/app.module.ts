@@ -1,3 +1,8 @@
+import { CoreDetailsPage } from './../pages/core-details/core-details';
+import { CoreListPage } from './../pages/core-list/core-list';
+import { CapsuleDetailsPage } from './../pages/capsule-details/capsule-details';
+import { CapsulesListPage } from './../pages/capsules-list/capsules-list';
+import { LaunchesFiltersPopoverPage } from './../pages/launches-filters-popover/launches-filters-popover';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -36,7 +41,12 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     LaunchDetailsPage,
     LaunchListPage,
     ParametersPopoverPage,
-    LaunchpadDetailsPage
+    LaunchpadDetailsPage,
+    LaunchesFiltersPopoverPage,
+    CapsulesListPage,
+    CapsuleDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +67,11 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     LaunchDetailsPage,
     LaunchListPage,
     ParametersPopoverPage,
-    LaunchpadDetailsPage
+    LaunchpadDetailsPage,
+    CapsulesListPage,
+    CapsuleDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   providers: [
     StatusBar,

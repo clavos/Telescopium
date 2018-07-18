@@ -12,15 +12,17 @@ import { ConstantProvider } from '../../providers/constant/constant';
 export class HomePage {
   pages: Array<{ title: string, imgPath: string, component: any }>;
   nextLaunch: Launch;
+  lastLaunch: Launch;
 
-  public isLoaded: boolean = false;
+  public nextIsLoaded: boolean = false;
+  public lastIsLoaded: boolean = false;
   private spinner: Loading;
   public days;
   public hours;
   public minutes;
   public seconds;
   public maxTime: any;
-  private intervalID: any;
+  public intervalID: any;
   constructor(public navCtrl: NavController, private constant: ConstantProvider, private provider: SrcAppProviderSpaceXProvider, private loader: LoadingController) {
     this.spinner = this.loader.create({
       content: "Please wait..."
@@ -28,7 +30,7 @@ export class HomePage {
     this.pages = this.constant.pages().slice(1, this.constant.pages().length);
     this.provider.getNextLaunch().subscribe((data) => {
       this.nextLaunch = data;
-      this.isLoaded = true;
+      this.nextIsLoaded = true;
       this.spinner.dismiss();
       this.maxTime = Date.parse(this.nextLaunch.launch_date_utc) - Date.now();
       //console.log("Date1", Date.parse(this.nextLaunch.launch_date_utc), this.nextLaunch.launch_date_utc, "now date", Date.now(), "elapsed", this.maxTime);
@@ -49,6 +51,11 @@ export class HomePage {
 
       this.StartTimer();
       //this.intervalID = setInterval(function(){this.calculateElapsedTime()}, 5000);
+    })
+    this.provider.getLastLaunch().subscribe((data) => {
+      this.lastLaunch = data;
+      this.lastIsLoaded = true;
+      this.spinner.dismiss();
     })
   }
 
@@ -84,5 +91,8 @@ export class HomePage {
 
   public openNextLauch(){
     this.navCtrl.push(LaunchDetailsPage, this.nextLaunch);
+  }
+  public openLastLauch(){
+    this.navCtrl.push(LaunchDetailsPage, this.lastLaunch);
   }
 }

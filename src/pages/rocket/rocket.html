@@ -19,7 +19,9 @@
 <ion-content padding>
     <ion-list>
       <button ion-item *ngFor="let rocket of rockets" (click)="navigate(rocket)">
-        {{ rocket.name }}
+        <h2>{{ rocket.name }}</h2>
+        <p>{{rocket.type}}</p>
+        <ion-note item-end><ion-icon [ngStyle]="{'color' : ((rocket.active)?'green':'red')}" name="{{((rocket.active)?'checkmark-circle':'ios-close-circle')}}"></ion-icon></ion-note>
       </button>  
     </ion-list>
 </ion-content>

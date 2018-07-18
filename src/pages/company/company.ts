@@ -18,7 +18,7 @@ import { Company } from '../../models/Company';
 export class CompanyPage {
   public Company: Company;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private spaceXservice: SrcAppProviderSpaceXProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected spaceXservice: SrcAppProviderSpaceXProvider) {
     spaceXservice.getCompany().subscribe(data => {
       this.Company = data;
     })
