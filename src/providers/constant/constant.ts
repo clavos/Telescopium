@@ -6,6 +6,7 @@ import { RocketPage } from '../../pages/rocket/rocket';
 import { LaunchPage } from '../../pages/launch/launch';
 import { CompanyPage } from '../../pages/company/company';
 import { LaunchPadPage } from '../../pages/launch-pad/launch-pad';
+import { CoreListPage } from '../../pages/core-list/core-list';
 
 /*
   Generated class for the ConstantProvider provider.
@@ -27,7 +28,8 @@ export class ConstantProvider {
       { title: 'Launches', imgPath:"assets/imgs/launch.png", component: LaunchPage },
       { title: 'Launch pads', imgPath:"assets/imgs/launchpad.png", component: LaunchPadPage }, 
       { title: 'Capsules', imgPath:"", component: CapsulesListPage }, 
-      { title: 'About SpaceX', imgPath:"assets/imgs/CompanyLogo.png", component: CompanyPage },
+      { title: 'Cores', imgPath:"", component: CoreListPage }, 
+      //{ title: 'About SpaceX', imgPath:"assets/imgs/CompanyLogo.png", component: CompanyPage },
       
     ];
   }

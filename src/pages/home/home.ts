@@ -20,7 +20,7 @@ export class HomePage {
   public minutes;
   public seconds;
   public maxTime: any;
-  private intervalID: any;
+  public intervalID: any;
   constructor(public navCtrl: NavController, private constant: ConstantProvider, private provider: SrcAppProviderSpaceXProvider, private loader: LoadingController) {
     this.spinner = this.loader.create({
       content: "Please wait..."

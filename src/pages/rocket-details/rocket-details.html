@@ -22,10 +22,10 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-card>
     <ion-item>
       <ion-label>
-        Name
+        Rocket name
       </ion-label>
       <div item-content>
         {{rocket.name}}
@@ -43,8 +43,8 @@
       <ion-label>
         Active
       </ion-label>
-      <div item-content>
-        {{rocket.active}}
+      <div item-content [ngStyle]="{'color' : ((rocket.active)?'green':'red')}">
+        <ion-icon name="{{((rocket.active)?'checkmark-circle':'ios-close-circle')}}"></ion-icon>
       </div>
     </ion-item>
     <ion-item>
@@ -63,6 +63,8 @@
         {{rocket.boosters}}
       </div>
     </ion-item>
+  </ion-card>
+  <ion-list>
     <ion-item>
       <ion-label>
         Cost per launch

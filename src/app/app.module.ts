@@ -1,3 +1,6 @@
+import { CoreDetailsPage } from './../pages/core-details/core-details';
+import { CoreListPage } from './../pages/core-list/core-list';
+import { CapsuleDetailsPage } from './../pages/capsule-details/capsule-details';
 import { CapsulesListPage } from './../pages/capsules-list/capsules-list';
 import { LaunchesFiltersPopoverPage } from './../pages/launches-filters-popover/launches-filters-popover';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,7 +43,10 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     ParametersPopoverPage,
     LaunchpadDetailsPage,
     LaunchesFiltersPopoverPage,
-    CapsulesListPage
+    CapsulesListPage,
+    CapsuleDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,10 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
     LaunchListPage,
     ParametersPopoverPage,
     LaunchpadDetailsPage,
-    CapsulesListPage
+    CapsulesListPage,
+    CapsuleDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   providers: [
     StatusBar,

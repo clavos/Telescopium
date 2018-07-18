@@ -2,7 +2,7 @@ export class Capsule {
     id: string;
     name: string;
     type: string;
-    active: string;
+    active: boolean;
     crew_capacity: number;
     sidewall_angle_deg: number;
     orbit_duration_yr: number;

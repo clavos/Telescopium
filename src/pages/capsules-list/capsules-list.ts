@@ -1,4 +1,5 @@
-import { Capsule } from './../../models/Capsule';
+import { CapsuleDetailsPage } from './../capsule-details/capsule-details';
+import { Capsule, CapsuleDetails } from './../../models/Capsule';
 import { Subscription } from 'rxjs/Subscription';
 import { SrcAppProviderSpaceXProvider } from './../../providers/src-app-provider-space-x/src-app-provider-space-x';
 import { ParametersProvider } from './../../providers/parameters/parameters';
@@ -18,16 +19,15 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
   templateUrl: 'capsules-list.html',
 })
 export class CapsulesListPage {
-  capsules: Array<Capsule>;
-  title: string;
+  capsules: Array<CapsuleDetails>;
   private spinner: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private provider: SrcAppProviderSpaceXProvider, private loadingCtrl: LoadingController) {
     
   }
 
-  openCapsule(capsule: Capsule){
-    
+  openCapsule(capsule: CapsuleDetails){
+    this.navCtrl.push(CapsuleDetailsPage, capsule);
   }
 
   ionViewDidLoad() {
@@ -36,10 +36,13 @@ export class CapsulesListPage {
     });
   
     this.spinner.present();
-    this.provider.getCapsules().subscribe(data => {
+    this.provider.getCapsulesDetails().subscribe(data => {
       this.capsules = data;
     }, ()=> console.log("error"), () => this.spinner.dismiss())
     console.log('ionViewDidLoad CapsulesListPage');
   }
 
+  // public getActiveToString(capsule: CapsuleDetails): string{
+  //   return (capsule.status == "active")?"Active":"Inactive";
+  // }
 }

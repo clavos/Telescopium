@@ -19,7 +19,9 @@
 <ion-content padding>
     <ion-list>
       <button ion-item *ngFor="let rocket of rockets" (click)="navigate(rocket)">
-        {{ rocket.name }}
+        <h2>{{ rocket.name }}</h2>
+        <p>{{rocket.type}}</p>
+        <ion-note [ngStyle]="{'color' : ((rocket.active)?'green':'red')}" item-end>{{rocket.active}}</ion-note>
       </button>  
     </ion-list>
 </ion-content>
