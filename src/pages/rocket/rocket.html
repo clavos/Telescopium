@@ -21,7 +21,7 @@
       <button ion-item *ngFor="let rocket of rockets" (click)="navigate(rocket)">
         <h2>{{ rocket.name }}</h2>
         <p>{{rocket.type}}</p>
-        <ion-note [ngStyle]="{'color' : ((rocket.active)?'green':'red')}" item-end>{{rocket.active}}</ion-note>
+        <ion-note item-end><ion-icon [ngStyle]="{'color' : ((rocket.active)?'green':'red')}" name="{{((rocket.active)?'checkmark-circle':'ios-close-circle')}}"></ion-icon></ion-note>
       </button>  
     </ion-list>
 </ion-content>

@@ -32,12 +32,10 @@ export class LaunchPadPage {
 
   getColorStatusLaunchpad(launchPad: LaunchPad): string{
     switch(launchPad.status){
-      case "expended":
-        return "yellow";
-      case "destroyed":
-        return "red";
+      case "under construction":
+        return "orange";
       case "retired":
-        return "grey";
+        return "red";
       case "active":
         return "green";
     }

@@ -31,7 +31,7 @@
       </ion-card>
     </ion-item>
   </ion-list> -->
-  <ion-card *ngIf="isLoaded">
+  <ion-card *ngIf="nextIsLoaded">
     <ion-card-header>
       Next launch
     </ion-card-header>
@@ -62,8 +62,43 @@
         </div>
       </ion-item>
       <button ion-item (click)="openNextLauch()">
-        More informations on Launch
+        More informations
       </button>
     </ion-list>
   </ion-card>
+  <ion-card *ngIf="lastIsLoaded">
+      <ion-card-header>
+        Last launch
+      </ion-card-header>
+      <ion-item>
+        <div class="centered-item">
+            <b>{{lastLaunch.launch_date_utc | date:'dd/MM/yyyy HH:MM'}}</b>
+        </div>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Flight number
+          </ion-label>
+          <div item-content>
+            {{lastLaunch.flight_number}}
+          </div>
+          <!-- <ion-note item-end>
+              
+            </ion-note> -->
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>
+            Success
+          </ion-label>
+          <div item-content [ngStyle]="{'color' : ((lastLaunch.launch_success)?'green':'red')}">
+            <ion-icon name="{{((lastLaunch.launch_success)?'checkmark-circle':'ios-close-circle')}}"></ion-icon>
+          </div>
+        </ion-item>
+        <button ion-item (click)="openNextLauch()">
+          More informations
+        </button>
+      </ion-list>
+    </ion-card>
 </ion-content>

@@ -30,7 +30,7 @@ export class CoreListPage {
   getColorStatusCore(core: Core):string{
     switch(core.status){
       case "expended":
-        return "yellow";
+        return "orange";
       case "destroyed":
         return "red";
       case "retired":
